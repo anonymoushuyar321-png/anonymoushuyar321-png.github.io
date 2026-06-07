@@ -1,34 +1,156 @@
 <!DOCTYPE html>
-<html lang="ur">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Anonymoushuyar321 | Cybersecurity Student</title>
+    <title>Anonymoushuyar321 | Portfolio</title>
     <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
         body {
-            background-color: #0d1117;
-            color: #58a6ff;
+            background-color: #05070a;
+            color: #00ff66;
             font-family: 'Courier New', Courier, monospace;
+            overflow: hidden;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        /* Landing Screen CSS */
+        #landing-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #05070a;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 999;
+            transition: opacity 1s ease-in-out, visibility 1s;
+            padding: 20px;
+        }
+        .terminal-loader {
+            border: 1px solid #00ff66;
+            background-color: #0a0f14;
+            padding: 25px;
+            width: 100%;
+            max-width: 500px;
+            box-shadow: 0 0 15px rgba(0, 255, 102, 0.2);
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        .text-animation {
+            font-size: 14px;
+            white-space: pre-wrap;
+            overflow: hidden;
+            border-right: 2px solid #00ff66;
+            animation: typing 3s steps(40, end), blink-caret .75s step-end infinite;
+            margin-bottom: 15px;
+        }
+        .enter-btn {
+            background-color: transparent;
+            color: #00ff66;
+            border: 2px solid #00ff66;
+            padding: 12px 30px;
+            font-size: 16px;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 10px rgba(0, 255, 102, 0.1);
+        }
+        .enter-btn:hover {
+            background-color: #00ff66;
+            color: #05070a;
+            box-shadow: 0 0 20px rgba(0, 255, 102, 0.6);
+            transform: scale(1.05);
+        }
+        /* Main Dashboard (Jo Enter ke baad dikhega) */
+        #main-content {
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 1s ease-in-out;
+            width: 100%;
+            max-width: 800px;
+            padding: 20px;
             text-align: center;
-            padding: 50px;
+        }
+        .dashboard-box {
+            border: 1px solid #333;
+            background-color: #0a0f14;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 0 25px rgba(0,0,0,0.5);
         }
         h1 {
-            color: #238636;
+            color: #ffffff;
+            margin-bottom: 10px;
+            font-size: 28px;
         }
-        .container {
-            border: 1px solid #30363d;
-            padding: 20px;
+        .accent-text {
+            color: #00ff66;
+        }
+        .status-tag {
             display: inline-block;
-            background-color: #161b22;
-            border-radius: 6px;
+            background: rgba(0, 255, 102, 0.1);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 12px;
+            margin-top: 15px;
+            border: 1px solid rgba(0, 255, 102, 0.3);
+        }
+        /* Animations */
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: #00ff66; }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Welcome to My PortFolio</h1>
-        <p>Hi, I am a Cybersecurity Student.</p>
-        <p>Status: Building my testing setup and labs...</p>
+
+    <!-- 1. ENTRY SCREEN (LANDING) -->
+    <div id="landing-screen">
+        <div class="terminal-loader">
+            <div class="text-animation">[-] INITIALIZING PORTFOLIO SYSTEM...&#10;[-] CONNECTION SECURED TO MAIN FRAME.&#10;[-] STATUS: READY FOR ACCESS.</div>
+        </div>
+        <button class="enter-btn" onclick="enterSystem()">ENTER SYSTEM</button>
     </div>
+
+    <!-- 2. MAIN WEBSITE CONTENT (MAIN BACKEND) -->
+    <div id="main-content">
+        <div class="dashboard-box">
+            <h1>Welcome To <span class="accent-text">My Space</span></h1>
+            <p style="color: #888; margin-bottom: 20px;">-----------------------------------------</p>
+            <p>Hi, I am a Cybersecurity Student.</p>
+            <p style="margin-top: 10px; color: #58a6ff;">Exploring Red Teaming, OSINT & Defensive Labs.</p>
+            <div class="status-tag">Status: Building my testing setup...</div>
+        </div>
+    </div>
+
+    <script>
+        function enterSystem() {
+            // Landing screen ko chupane ke liye
+            document.getElementById('landing-screen').style.opacity = '0';
+            document.getElementById('landing-screen').style.visibility = 'hidden';
+            
+            // Main website content ko show karne ke liye
+            setTimeout(() => {
+                document.getElementById('main-content').style.opacity = '1';
+                document.getElementById('main-content').style.visibility = 'visible';
+            }, 500);
+        }
+    </script>
 </body>
 </html>
